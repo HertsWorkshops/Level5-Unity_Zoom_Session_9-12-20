@@ -10,8 +10,7 @@ public class GranadeSpawner : MonoBehaviour
     float timer;
     public float speed = 10f;
     float waitTime;
-    public float destroyTime = 3;
-    public ParticleSystem salt;
+    public float destroyTime = 3;  
 
     void Start()
     {
@@ -21,8 +20,7 @@ public class GranadeSpawner : MonoBehaviour
     {
         currenttime = Time.time;
         if (currenttime > timer)
-        {
-            salt.Play();
+        {           
             GameObject projectile = Instantiate(granade);
             Physics.IgnoreCollision(projectile.GetComponent<Collider>(), SpawnPoint.parent.GetComponent<Collider>());
             projectile.transform.SetParent(null);

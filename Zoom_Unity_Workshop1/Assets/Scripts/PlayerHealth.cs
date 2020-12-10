@@ -18,7 +18,11 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         activateRagdoll = GetComponent<ActivateRagdoll>();
-        enemyController = GameObject.FindGameObjectWithTag("enemy").GetComponent<enemyController>();       
+        if (enemyController !=null)
+        {
+          enemyController = GameObject.FindGameObjectWithTag
+                ("enemy").GetComponent<enemyController>();       
+        }
         damageOverlay = GameObject.Find("DamageOverlay").GetComponent<CanvasGroup>();        
         PlayerCanDie = true;
     }
@@ -43,7 +47,10 @@ public class PlayerHealth : MonoBehaviour
     public void playerDies()
     {
         activateRagdoll.ragdoolEnabled(true);
+        if (enemyController !=null)
+        {
         enemyController.ragdollActivated();
+        }
         StartCoroutine(damageFade());
     }
     IEnumerator damageFade()
